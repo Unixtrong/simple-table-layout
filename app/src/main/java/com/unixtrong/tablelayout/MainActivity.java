@@ -20,22 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SampleObject sample = new SampleObject();
-        sample.header1 = "danyun";
-
-        Field[] fields = SampleObject.class.getFields();
-        Utils.debug("getFields: " + Arrays.toString(fields));
-        Field[] declaredFields = SampleObject.class.getDeclaredFields();
-        Utils.debug("getDeclaredFields: " + Arrays.toString(declaredFields));
-        for (Field field : declaredFields) {
-            try {
-                Object o = field.get(sample);
-                Utils.debug(String.format("%s: %s", field.getName(), o));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
-
         List<SampleObject> dataList = new ArrayList<SampleObject>() {{
             for (int i = 1; i <= 20; i++) {
                 add(new SampleObject(
