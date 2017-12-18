@@ -155,8 +155,10 @@ public class SimpleTableLayout extends RelativeLayout {
 
     private void fillTitleColumnChild(String titleColumnText) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mTitleColumnWidth, LayoutParams.MATCH_PARENT);
-        params.setMargins(10, 10, 10, 10);
-        mTitleColumnLayout.addView(this.bodyTextView(titleColumnText), params);
+        params.setMargins(0, 2, 0, 0);
+        TextView textView = this.bodyTextView(titleColumnText);
+        textView.setBackgroundColor(Color.LTGRAY);
+        mTitleColumnLayout.addView(textView, params);
     }
 
     private void fillContentRow(Map<String, ?> info) {
@@ -174,7 +176,7 @@ public class SimpleTableLayout extends RelativeLayout {
         TextView bodyTextView = new TextView(getContext());
         bodyTextView.setText(label);
         bodyTextView.setGravity(Gravity.CENTER);
-        bodyTextView.setPadding(5, 5, 5, 5);
+        bodyTextView.setPadding(10, 10, 10, 10);
         return bodyTextView;
     }
 
