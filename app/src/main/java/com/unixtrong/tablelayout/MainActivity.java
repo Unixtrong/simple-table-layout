@@ -2,16 +2,10 @@ package com.unixtrong.tablelayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,38 +14,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<SampleObject> dataList = new ArrayList<SampleObject>() {{
-            for (int i = 1; i <= 20; i++) {
-                add(new SampleObject(
-                        "Col 1, Row " + i,
-                        "Col 2, Row " + i + " - multi lines",
-                        "Col 3, Row " + i,
-                        "Col 4, Row " + i,
-                        "Col 5, Row " + i,
-                        "Col 6, Row " + i,
-                        "Col 7, Row " + i,
-                        "Col 8, Row " + i,
-                        "Col 9, Row " + i,
-                        "Col A, Row " + i,
-                        "Col B, Row " + i,
-                        "Col C, Row " + i
-                ));
-            }
-        }};
+        String[] mon = "语 数 外 数 理 化 生 体".split(" ");
+        String[] tue = "体 语 数 外 数 理 化 生".split(" ");
+        String[] wed = "生 体 语 数 外 数 理 化".split(" ");
+        String[] thu = "化 生 体 语 数 外 数 理".split(" ");
+        String[] fri = "理 化 生 体 语 数 外 数".split(" ");
+        String[] sat = "数 理 化 生 体 语 数 外".split(" ");
+        String[] Sun = "外 数 理 化 生 体 语 数".split(" ");
+
+        List<SampleObject> dataList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            String header = "第" + (i + 1) + "节";
+            SampleObject obj = new SampleObject(header);
+            obj.value1 = mon[i];
+            obj.value2 = tue[i];
+            obj.value3 = wed[i];
+            obj.value4 = thu[i];
+            obj.value5 = fri[i];
+            obj.value6 = sat[i];
+            obj.value7 = Sun[i];
+            dataList.add(obj);
+        }
 
         SimpleTableLayout tableLayout = (SimpleTableLayout) findViewById(R.id.stl);
         LinkedHashMap<String, LinkedHashMap<String, ?>> map = new LinkedHashMap<>();
         for (SampleObject bean : dataList) {
-            map.put(bean.header1, toMap(bean));
+            map.put(bean.header, toMap(bean));
         }
-        tableLayout.setFirstCell("Unixtrong");
+        tableLayout.setFirstCell("节次 \\ 星期");
         tableLayout.setDataList(map);
     }
 
     private LinkedHashMap<String, String> toMap(SampleObject bean) {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
-        map.put("2", bean.header2);
-        map.put("3", bean.header3);
+        map.put("星期一", bean.value1);
+        map.put("星期二", bean.value2);
+        map.put("星期三", bean.value3);
+        map.put("星期四", bean.value4);
+        map.put("星期五", bean.value5);
+        map.put("星期六", bean.value6);
+        map.put("星期日", bean.value7);
         return map;
     }
 }

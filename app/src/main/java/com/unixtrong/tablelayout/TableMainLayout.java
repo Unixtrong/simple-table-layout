@@ -235,7 +235,7 @@ public class TableMainLayout extends RelativeLayout {
         params.setMargins(0, 2, 0, 0);
 
         TableRow tableRowForTableC = new TableRow(this.context);
-        TextView textView = this.bodyTextView(sampleObject.header1);
+        TextView textView = this.bodyTextView(sampleObject.header);
         tableRowForTableC.addView(textView,params);
 
         return tableRowForTableC;
@@ -247,14 +247,13 @@ public class TableMainLayout extends RelativeLayout {
 
         int loopCount = ((TableRow)this.tableB.getChildAt(0)).getChildCount();
         String info[] = {
-                sampleObject.header2,
-                sampleObject.header3,
-                sampleObject.header4,
-                sampleObject.header5,
-                sampleObject.header6,
-                sampleObject.header7,
-                sampleObject.header8,
-                sampleObject.header9
+                sampleObject.value1,
+                sampleObject.value2,
+                sampleObject.value3,
+                sampleObject.value4,
+                sampleObject.value5,
+                sampleObject.value6,
+                sampleObject.value7
         };
 
         for(int x=0 ; x<loopCount; x++){
